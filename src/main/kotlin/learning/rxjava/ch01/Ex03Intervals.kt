@@ -1,4 +1,4 @@
-package ch01
+package learning.rxjava.ch01
 
 import io.reactivex.Observable
 import java.lang.Thread.sleep
