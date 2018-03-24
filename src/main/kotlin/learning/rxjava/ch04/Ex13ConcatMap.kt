@@ -13,5 +13,5 @@ fun main(args: Array<String>) {
 }
 
 private fun printNext(it: Any?) {
-    println("Processing $it [${Thread.currentThread().name}]")
+    println("[${Thread.currentThread().name}] Processing $it")
 }
