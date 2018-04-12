@@ -8,20 +8,20 @@ import java.util.concurrent.TimeUnit.SECONDS
 
 fun main(args: Array<String>) {
 
-    val msInterval: Long = 300
-    val secInterval: Long = 1
+    val msPeriod: Long = 300
+    val secPeriod: Long = 1
 
-    val millis = Observable.interval(msInterval, MILLISECONDS)
-    val seconds = Observable.interval(secInterval, SECONDS)
+    val millis = Observable.interval(msPeriod, MILLISECONDS)
+    val seconds = Observable.interval(secPeriod, SECONDS)
 
     Observable.combineLatest(millis, seconds,
             BiFunction { msCount: Long, secCount: Long ->
-                "{ ${elapsed(msCount, msInterval, "ms")} , ${elapsed(secCount, secInterval, "s")} }"
+                "{ ${elapsed(msCount, msPeriod, "ms")} , ${elapsed(secCount, secPeriod, "s")} }"
             }
     ).subscribe(::println)
 
     SECONDS.sleep(4)
 }
 
-private fun elapsed(count: Long, interval: Long, unitAbbreviation: String): String =
-        "${(count + 1) * interval}$unitAbbreviation"
+private fun elapsed(count: Long, period: Long, unitAbbreviation: String): String =
+        "${(count + 1) * period}$unitAbbreviation"
